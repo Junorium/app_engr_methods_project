@@ -10,28 +10,20 @@ import openai
 import gpiozero
 import sleep
 
-from google.cloud import speech_v1p1beta1 as speech
-from google.cloud.speech_v1p1beta1 import enums
-
 # initialize api keys
 openai.api_key = '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'
 
-def transcribe(input_audio):
-  client = speech.SpeechClient()
-  config = 
+def transcribe(audio):
+  with open(audio, 'rb'):
+    audio_file = audio.read()
 
-  with open(input_audio, 'rb') as audio_file:
-    content = audio_file.read()
-
-  response = client.recognize(
-    {
-    "language_code" : "en-US", 
-    "enable_word_time_offsets" : True,
-    },
-    audio = {"content" : content}
+  response = openai.Transcription.create(
+    engine = "whisper",
+    audio = audio_file,
+    content_type = 'audio/wav',
   )
-
-return response
+  
+  return response['text']
 
 def create_response(prompt):
   response = openai.ChatCompletion.create(
@@ -50,7 +42,7 @@ def main(input, output):
     file.write(create_response(input))
 
 if __name__ == "__main__":
-  audio_file_path = '.mp3' # audio file
+  audio_file_path = '.wav' # audio file
   transcribed_text = '.txt' # intermediate text file
   output_response = '.txt' # response from chatgpt
   
