@@ -1,11 +1,14 @@
-# https://www.geeksforgeeks.org/how-to-use-chatgpt-api-in-python/#
+# JR Perez
+# ENGR010
+
+# prior to installation, run the following in terminal
 '''
-pip install -openai
+pip install openai
 pip install gpiozero
 '''
 
 # import libraries
-import openai
+from openai import OpenAI
 import gpiozero
 import sleep
 
@@ -14,8 +17,8 @@ import numpy as np
 from gpiozero import Button
 import sounddevice as sd
 
-# initialize api keys; intialize gpio pin
-openai.api_key = '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'
+# initialize private api key, remove comment; intialize gpio pin
+# openai.api_key = 'enter API key'
 button = Button(17)
 
 def start_record():
@@ -24,7 +27,7 @@ def start_record():
     duration = 0
     output_file = "prompt.wav"
 
-  # copied from documentation
+    # copied from documentation
     def callback(indata, frames, time, status):
         if status:
             print(status, file=sys.stderr)
@@ -69,7 +72,6 @@ def main(input, output):
     file.write(create_response(input))
 
 # change accordingly to GPIO anode of button
-
 
 # audio parameters
 sample_rate = 44100
