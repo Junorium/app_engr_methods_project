@@ -1,3 +1,4 @@
-```git
+```
 >>> pip install gpiozero
+>>> pip install openai
 ```
