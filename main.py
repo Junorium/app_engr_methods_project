@@ -1,12 +1,6 @@
 # JR Perez
 # ENGR010
 
-# prior to installation, run the following in terminal
-'''
-pip install openai
-pip install gpiozero
-'''
-
 # import libraries
 from openai import OpenAI
 import gpiozero
