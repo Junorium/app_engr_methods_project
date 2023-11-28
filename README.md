@@ -7,6 +7,8 @@ Python 3 must be reinstalled prior.
   <ul>USB Microphone</ul>
   <ul>Tactile Button</ul>
   <ul>Male-to-Female Wires</ul>
+  <ul>2 Self-Tapping Screws</ul>
+  <ul>Device Chassis (provided)</ul>
 </li>
 
 # Wiring
@@ -21,6 +23,7 @@ Install the following in Raspberry Pi terminal prior to running program
 ```
 >>> pip install gpiozero
 >>> pip install openai
+>>> pip install sounddevice
 ```
 
 # API Keys
