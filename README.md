@@ -16,6 +16,7 @@ With the speaker, attach the cathode to pin X and the anode to GND.
 Connect a continuous 5V power supply to the Rapsberry Pi.
 
 # Installation
+[Python 3](https://www.python.org/downloads/) must be installed prior to installing the following libraries.
 Install the following in Raspberry Pi terminal prior to running program
 ```
 >>> pip install gpiozero
