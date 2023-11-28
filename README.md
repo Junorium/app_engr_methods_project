@@ -29,3 +29,6 @@ Install the following in Raspberry Pi terminal prior to running program
 # API Keys
 Prior to running the program, you must create a free [OpenAI account](https://openai.com/blog/openai-api).
 Create a private API key and substitute in line X of main.py, removing the comment at the start to initialize the API key.
+
+# Testing
+In order to test the device, once running, use the following templates:
