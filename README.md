@@ -1,12 +1,11 @@
 # Rapsberry Pi OpenAI Device
 The 3D printed chassis fits a Raspberry Pi 3 B+.  
 Printable STL file is attached with .zip file.
-Python 3 must be reinstalled prior.
 
 <li>
-  <ul>USB Microphone</ul>
-  <ul>Tactile Button</ul>
-  <ul>Male-to-Female Wires</ul>
+  <ul>[USB Microphone](https://www.amazon.com/KISEER-Microphone-Desktop-Recording-YouTube/dp/B071WH7FC6/ref=sr_1_3?crid=FJIDSW51HA6X&keywords=usb+microphone+raspberry+pi&qid=1701186681&sprefix=usb+microphone+raspberry+pi%2Caps%2C101&sr=8-3)</ul>
+  <ul>[Tactile Button](https://www.amazon.com/WOWOONE-12x12x7-3-Tactile-Momentary-Assortment/dp/B08JLWTQ3C/ref=sr_1_2_sspa?crid=1AOOVLP2HAS5P&keywords=tactile+button&qid=1701186342&sprefix=tactile+buton%2Caps%2C71&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1)</ul>
+  <ul>Male-to-Female Jumper Wires</ul>
   <ul>2 Self-Tapping Screws</ul>
   <ul>Device Chassis (provided)</ul>
 </li>
