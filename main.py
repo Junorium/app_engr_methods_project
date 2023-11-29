@@ -14,6 +14,7 @@ import sounddevice as sd
 # initialize private api key, remove comment; intialize gpio pin
 # openai.api_key = 'enter API key'
 button = Button(17)
+microphone = 18
 
 def start_record():
     # refer to duration as global variable
