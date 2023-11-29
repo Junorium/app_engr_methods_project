@@ -12,7 +12,7 @@ Printable STL file is attached with .zip file.
 
 # Wiring
 With a tactile button, attach the positive terminal to pin 17 and the negative terminal to GND.
-With the speaker, attach the cathode to pin X and the anode to GND.
+With the speaker, attach the cathode to pin 18 and the anode to GND.
 
 Connect a continuous 5V power supply to the Rapsberry Pi.
 
