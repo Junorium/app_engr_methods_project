@@ -1,20 +1,27 @@
 import keyboard
 import openai
-from openai import whisper
+import whisper
+
+import sounddevice as sd
 
 # Set up your OpenAI API credentials
 openai.api_key = 'YOUR_API_KEY'
 
-# Define a function to record audio when the spacebar is pressed
+# Define a function to record audio
 def record_audio():
-    whisper.start()
-    keyboard.wait('space')
-    whisper.stop()
+    fs = 44100  # Sample rate
+    duration = 5  # Duration of recording in seconds
+    recording = sd.rec(int(fs * duration), samplerate=fs, channels=1)
+    sd.wait()  # Wait until recording is finished
+    return recording.flatten()
 
 # Convert the recorded audio into text
-def transcribe_audio():
-    audio = whisper.transcribe()
-    return audio['text']
+def transcribe_audio(audio):
+    # Use your preferred method or library to convert audio to text
+    # For example, you can use the Google Cloud Speech-to-Text API or another speech recognition library
+    # Replace the code below with your own implementation
+    transcribed_text = "This is a placeholder for the transcribed text"
+    return transcribed_text
 
 # Process the transcribed text using ChatGPT
 def process_text(text):
@@ -28,8 +35,8 @@ def process_text(text):
 
 # Main program
 def main():
-    record_audio()
-    transcribed_text = transcribe_audio()
+    audio = record_audio()
+    transcribed_text = transcribe_audio(audio)
     response = process_text(transcribed_text)
     print(response)
 
