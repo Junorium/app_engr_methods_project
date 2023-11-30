@@ -1,11 +1,10 @@
 import whisper
 import openai
 
-# Set up your OpenAI API credentials
-openai.api_key = ""
+# openai.api_key = 'enter API key'
 
 model = whisper.load_model("base")
-audio = "audio.mp3"
+audio = "audio.mp3" # save audio files as audio.mp3 or change this line
 result = model.transcribe(audio)
 
 with open("transcription.txt", "w", encoding="utf-8") as txt:
@@ -13,10 +12,10 @@ with open("transcription.txt", "w", encoding="utf-8") as txt:
 
 def process_prompt(prompt):
     # Make an API call to ChatGPT
-    response = openai.Completion.create(
+    response = openai.completions.create(
         engine="text-davinci-003",
         prompt=prompt,
-        max_tokens=100,
+        max_tokens=500, # change response tokens as needed
         temperature=0.7,
         n=1,
         stop=None,
@@ -25,6 +24,5 @@ def process_prompt(prompt):
 
     return response.choices[0].text.strip()
 
-# Example usage
 generated_response = process_prompt(result)
 print(generated_response)
