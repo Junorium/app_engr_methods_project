@@ -4,10 +4,10 @@ Printable STL file is attached with .zip file.
 
 <h1>Materials</h1>
 <li>
-  <a href="https://www.amazon.com/KISEER-Microphone-Desktop-Recording-YouTube/dp/B071WH7FC6/ref=sr_1_3?crid=FJIDSW51HA6X&keywords=usb+microphone+raspberry+pi&qid=1701186681&sprefix=usb+microphone+raspberry+pi%2Caps%2C101&sr=8-3">USB Microphone</a>
-  <a href="https://www.amazon.com/WOWOONE-12x12x7-3-Tactile-Momentary-Assortment/dp/B08JLWTQ3C/ref=sr_1_2_sspa?crid=1AOOVLP2HAS5P&keywords=tactile+button&qid=1701186342&sprefix=tactile+buton%2Caps%2C71&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1">Tactile Button</ul>
-  <a href="https://www.amazon.com/EDGELEC-Breadboard-1pin-1pin-Connector-Multicolored/dp/B07GD312VG/ref=sr_1_3?crid=2FLHPMWDB4DLU&keywords=female%2Bto%2Bfemale%2Bjumper&qid=1701310886&sprefix=female%2Bto%2Bfemale%2Bjumper%2Caps%2C69&sr=8-3&th=1">Male-to-Female Jumper Wires</a>
-  <a href="https://www.amazon.com/Stainless-Drilling-Lengths-Available-Phillips/dp/B08MQ5CLSD/ref=sr_1_3?crid=NZ255TMOQ7DD&keywords=6x1%2Bself%2Btapping%2Bscrews&qid=1701310966&sprefix=6x1%2Bself%2Btapping%2Bscrews%2Caps%2C60&sr=8-3&th=1">2 Self-Tapping Screws (#6 x 1")</ul>
+  <ul?<a href="https://www.amazon.com/KISEER-Microphone-Desktop-Recording-YouTube/dp/B071WH7FC6/ref=sr_1_3?crid=FJIDSW51HA6X&keywords=usb+microphone+raspberry+pi&qid=1701186681&sprefix=usb+microphone+raspberry+pi%2Caps%2C101&sr=8-3">USB Microphone</a></ul>
+  <ul><a href="https://www.amazon.com/WOWOONE-12x12x7-3-Tactile-Momentary-Assortment/dp/B08JLWTQ3C/ref=sr_1_2_sspa?crid=1AOOVLP2HAS5P&keywords=tactile+button&qid=1701186342&sprefix=tactile+buton%2Caps%2C71&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1">Tactile Button</a></ul>
+  <ul><a href="https://www.amazon.com/EDGELEC-Breadboard-1pin-1pin-Connector-Multicolored/dp/B07GD312VG/ref=sr_1_3?crid=2FLHPMWDB4DLU&keywords=female%2Bto%2Bfemale%2Bjumper&qid=1701310886&sprefix=female%2Bto%2Bfemale%2Bjumper%2Caps%2C69&sr=8-3&th=1">Male-to-Female Jumper Wires</a></ul>
+  <ul><a href="https://www.amazon.com/Stainless-Drilling-Lengths-Available-Phillips/dp/B08MQ5CLSD/ref=sr_1_3?crid=NZ255TMOQ7DD&keywords=6x1%2Bself%2Btapping%2Bscrews&qid=1701310966&sprefix=6x1%2Bself%2Btapping%2Bscrews%2Caps%2C60&sr=8-3&th=1">2 Self-Tapping Screws (#6 x 1")</a></ul>
   <ul>Device Case (provided)</ul>
 </li>
 
