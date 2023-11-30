@@ -25,12 +25,12 @@ Create a private API key and substitute in line 14 of main.py, removing the comm
 
 <h1>Testing</h1>
 In order to test the device, once running, use the following templates:
-```
+'''
 Create a set of 20 flash cards along the AP Chemistry curriculum about Kinetics.
 Create a problem set of 30 questions regarding Related Rates along college-level Calculus curricula.
 Give me an example of the use of recusion in coding across different coding languages.
 Create a list of prompts I could use to brainstorm topics for my introductory philosophy course.
-```
+'''
 
 # Alternative Program
 Run this program instead if materials for main program is unfeasible.
