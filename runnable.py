@@ -2,10 +2,16 @@ import whisper
 import openai
 
 # Set up your OpenAI API credentials
-openai.api_key = "YOUR_API_KEY"
+openai.api_key = ""
 
-# Define the function to process the text prompt through ChatGPT
-def process_text_prompt(prompt):
+model = whisper.load_model("base")
+audio = "audio.mp3"
+result = model.transcribe(audio)
+
+with open("transcription.txt", "w", encoding="utf-8") as txt:
+    txt.write(result["text"])
+
+def process_prompt(prompt):
     # Make an API call to ChatGPT
     response = openai.Completion.create(
         engine="text-davinci-003",
@@ -17,12 +23,8 @@ def process_text_prompt(prompt):
         timeout=None,
     )
 
-    # Extract the generated text from the API response
-    generated_text = response.choices[0].text.strip()
-
-    return generated_text
+    return response.choices[0].text.strip()
 
 # Example usage
-prompt = "What is the meaning of life?"
-generated_response = process_text_prompt(prompt)
+generated_response = process_prompt(result)
 print(generated_response)
