@@ -1,44 +1,28 @@
-import keyboard
-import openai
 import whisper
-
-import sounddevice as sd
+import openai
 
 # Set up your OpenAI API credentials
-openai.api_key = 'YOUR_API_KEY'
+openai.api_key = "YOUR_API_KEY"
 
-# Define a function to record audio
-def record_audio():
-    fs = 44100  # Sample rate
-    duration = 5  # Duration of recording in seconds
-    recording = sd.rec(int(fs * duration), samplerate=fs, channels=1)
-    sd.wait()  # Wait until recording is finished
-    return recording.flatten()
-
-# Convert the recorded audio into text
-def transcribe_audio(audio):
-    # Use your preferred method or library to convert audio to text
-    # For example, you can use the Google Cloud Speech-to-Text API or another speech recognition library
-    # Replace the code below with your own implementation
-    transcribed_text = "This is a placeholder for the transcribed text"
-    return transcribed_text
-
-# Process the transcribed text using ChatGPT
-def process_text(text):
+# Define the function to process the text prompt through ChatGPT
+def process_text_prompt(prompt):
+    # Make an API call to ChatGPT
     response = openai.Completion.create(
-        engine='text-davinci-003',
-        prompt=text,
+        engine="text-davinci-003",
+        prompt=prompt,
         max_tokens=100,
-        temperature=0.7
+        temperature=0.7,
+        n=1,
+        stop=None,
+        timeout=None,
     )
-    return response.choices[0].text.strip()
 
-# Main program
-def main():
-    audio = record_audio()
-    transcribed_text = transcribe_audio(audio)
-    response = process_text(transcribed_text)
-    print(response)
+    # Extract the generated text from the API response
+    generated_text = response.choices[0].text.strip()
 
-if __name__ == '__main__':
-    main()
+    return generated_text
+
+# Example usage
+prompt = "What is the meaning of life?"
+generated_response = process_text_prompt(prompt)
+print(generated_response)
