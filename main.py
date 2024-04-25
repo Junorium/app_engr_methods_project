@@ -2,31 +2,28 @@
 # ENGR010
 
 # import libraries
-from openai import OpenAI
-import gpiozero
-import sleep
-
+import sys
 import os
 import numpy as np
 import sounddevice as sd
+import requests
+from gpiozero import Button, OutputDevice
 
 # initialize private api key, remove comment; intialize gpio pin
 # openai.api_key = 'enter API key'
-button = gpiozero.Button(17)
-speaker = gpiozero.OutputDevice(18)
+button = Button(17)
+speaker = OutputDevice(18)
 
 # audio parameters
 sample_rate = 44100
-duration = 0
 
 # function to record audio
 def start_record():
-    # refer to duration as global variable
     global duration
     duration = 0
     output_file = "prompt.wav"
 
-    # copied from sd documentation
+    # callback function for recording
     def callback(indata, frames, time, status):
         if status:
             print(status, file=sys.stderr)
@@ -43,8 +40,8 @@ def start_record():
 
 # function to transcribe input audio to text
 def transcribe(audio):
-    with open(audio, 'rb'):
-        audio_file = audio.read()
+    with open(audio, 'rb') as f:
+        audio_file = f.read()
 
     response = openai.Transcription.create(
         engine="whisper",
@@ -57,9 +54,9 @@ def transcribe(audio):
 # function to create response from prompt (as text)
 def create_response(prompt):
     response = openai.ChatCompletion.create(
-        model = "gpt-3.5-turbo",
-        prompt = prompt,
-        max_tokens = 500 # max characters; change as needed for response length
+        model="gpt-3.5-turbo",
+        prompt=prompt,
+        max_tokens=500  # max characters; change as needed for response length
     )
 
     return response.choices[0].text
@@ -72,48 +69,55 @@ def record_close():
 
 # convert response text to speech
 def text_to_speech(text):
-    duration = 10
-    t = np.linspace(0, duration, int(sample_rate * duration), False)
-    audio_data = np.sin(2 * np.pi * 220 * t)
-
     payload = {
         "engine": "davinci",
         "voice": "en-US",
         "text": text
     }
     headers = {
-        "Authorization" : f"Bearer {openai.api_key}",
-        "Content-Type" : "application/json"
+        "Authorization": f"Bearer {openai.api_key}",
+        "Content-Type": "application/json"
     }
 
-    response = requests.post("https://api.openai.com/v1/engines/davinci/tts", json=payload, headers=headers, stream = True)
+    response = requests.post("https://api.openai.com/v1/engines/davinci/tts", json=payload, headers=headers, stream=True)
 
     if response.status_code == 200:
         audio_data = response.content
-        play_audio(audio_data, sample_rate)
+        play_audio(audio_data)
 
 # play response text through speaker
-def play_audio(audio, sample_rate):
+def play_audio(audio):
     sd.play(audio, sample_rate)
     sd.wait()
 
-# generate response from prompt
-def main_create(audio, transcribe, output):
-    with open(transcribe, 'w'):
-        transcribed.write(transcribe(audio))
-
-    with open(output, 'w'):
-        output.write(response(transcribe))
-
-
-if __name__ == "__main__":
+# function to handle main logic
+def main():
     audio_file_path = 'prompt.wav'  # audio file
     transcribed_text = 'transcribed.txt'  # prompt as text
     output_response = 'response.txt'  # response from chatgpt
 
+    # Start recording when button is held down
     button.when_held = start_record
-    button.when_pressed = main_create(audio_file_path, transcribed_text, output_response)
-    button.when_released = text_to_speech(output_response)  # play response through speaker
 
-    # ends recording
+    # Process recording and generate response when button is pressed
+    button.when_pressed = lambda: main_create(audio_file_path, transcribed_text, output_response)
+
+    # Play response through speaker when button is released
+    button.when_released = lambda: text_to_speech(output_response)
+
+    # Close recording
     record_close()
+
+# function to transcribe and generate response
+def main_create(audio, transcribed, output):
+    transcribed_text = transcribe(audio)
+    with open(transcribed, 'w') as f:
+        f.write(transcribed_text)
+
+    response_text = create_response(transcribed_text)
+    with open(output, 'w') as f:
+        f.write(response_text)
+
+# Run the main function
+if __name__ == "__main__":
+    main()
